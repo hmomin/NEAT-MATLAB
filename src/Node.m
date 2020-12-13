@@ -5,7 +5,7 @@ classdef Node < matlab.mixin.Copyable
     
     properties (Constant)
         % the bias can take on values between -MAX_BIAS and +MAX_BIAS
-        MAX_BIAS = 100000;
+        MAX_BIAS = 100;
     end
     
     properties (SetAccess = private)

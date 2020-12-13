@@ -1,18 +1,9 @@
 % this script implements NEAT to solve the XOR problem
 clc; clear; close all;
 
-DESIRED_FITNESS = 10^6;
-MAX_ITERATIONS = 10000;
-% a higher error power penalizes individual errors at the expense of the collective error.
-% an error power of 2 implements the usual square-distance cost function, but converges at
-% a much slower rate.
-ERROR_POWER = 4;
+DESIRED_FITNESS = 10;
+MAX_ITERATIONS = 150;
 
-% initialize variables
-fitness = 0;
-populationFitnesses = zeros(MAX_ITERATIONS, 1);
-tracker = InnovationTracker();
-pop = Population(2, 1, 150, tracker);
 inputPattern = [
     0, 0;
     0, 1;
@@ -25,6 +16,12 @@ outputPattern = [
     1;
     0;
 ];
+
+% initialize variables
+fitness = 0;
+populationFitnesses = zeros(MAX_ITERATIONS, 1);
+tracker = InnovationTracker();
+pop = Population(2, 1, 1000, tracker);
 
 for k = 1: MAX_ITERATIONS
     beginTime = tic;
@@ -48,8 +45,7 @@ for k = 1: MAX_ITERATIONS
                 output = net.feedForward(inputs);
                 outputs(n) = output;
                 % want to minimize the difference between output and expected output
-                absDist = abs(output - outputPattern(n));
-                fitness = fitness + absDist^ERROR_POWER;
+                fitness = fitness + abs(output - outputPattern(n))^2;
             end
             
             fitness = 1/fitness;

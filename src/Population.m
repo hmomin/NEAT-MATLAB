@@ -10,7 +10,7 @@ classdef Population < handle
         % this is delta_t from the original paper by Stanley -> it defines the threshold
         % that compability distances are measured within to determine species
         % compatibility
-        COMPATIBILITY_THRESHOLD = 3;
+        COMPATIBILITY_THRESHOLD = 1;
         % probability that a Genome has its weights mutated
         PROB_WEIGHT_MUTATION = 0.8;
         % probability that a Genome undergoes a structural Node mutation

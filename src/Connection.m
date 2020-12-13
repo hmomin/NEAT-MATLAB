@@ -7,7 +7,7 @@ classdef Connection < matlab.mixin.Copyable
     
     properties (Constant)
         % the weight can take on values between -MAX_WEIGHT and +MAX_WEIGHT
-        MAX_WEIGHT = 100000;
+        MAX_WEIGHT = 100;
     end
     
     properties (SetAccess = private)
